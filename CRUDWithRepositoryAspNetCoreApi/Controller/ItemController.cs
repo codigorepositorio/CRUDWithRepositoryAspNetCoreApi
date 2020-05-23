@@ -13,6 +13,7 @@ namespace CRUDWithRepositoryAspNetCoreApi.Controller
     {
         private IitemRepository iitemRepository;
 
+        //Inyectando la Interfaz.
         public ItemController(IitemRepository _iitemRepository)
         {
             iitemRepository = _iitemRepository;

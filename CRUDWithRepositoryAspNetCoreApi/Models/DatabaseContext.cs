@@ -19,20 +19,18 @@ namespace CRUDWithRepositoryAspNetCoreApi.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);            
 
-            //modelBuilder.ApplyConfiguration(new CategoriaMap());
+            modelBuilder.Entity<Item>(entity =>
+            {
+                entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
-            //modelBuilder.Entity<Item>(entity =>
-            //{
-            //    entity.Property(e => e.ItemId).HasColumnName("ItemID");
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-            //    entity.Property(e => e.Name)
-            //        .HasMaxLength(50)
-            //        .IsUnicode(false);
-
-            //    entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
-            //});
+                entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            });
 
             OnModelCreatingPartial(modelBuilder);
         }
